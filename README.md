@@ -1,5 +1,35 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+Heyy, this is a note from given. The creator of this game.
+
+First and foremost, clone this repo.
+
+Then, go to the server file, which is found in src/server, and run the command "node server.js" from that directory. This is to get the socket.io server up and running.
+
+then go to the master folder and type "npm start"
+
+This will lead to all the dependancies being installed first and then the app will pop up.
+
+To try if this app works, you could open two different browsers, it has to be different browsers as this app works with cookies/localStorage, as this has been created for friends, who are distant, that want to play each other. 
+
+so open 2 different browsers, go to the localhost address
+
+when 2 browsers are opened, it represents 2 people.
+
+the first will be given an id of 1 and the 2nd an ID of 2.
+
+So on browser of user with id = 1, they will see user of ID 2, as an opponent they can verse and so forth.
+
+When you request to play an opponent, there will be a notification on the opponents browser, when it pops up, you get to either accept or decline the invite.
+
+And the challenger will be notified of this.
+
+Lastly, the game is designed for laptop screens. I didn't get the time to make it suitable for both laptops and mobile phones. But i'll continue with it over time.
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
