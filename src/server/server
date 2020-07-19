@@ -1,0 +1,63 @@
+
+        socket.on('new message', (data) => {
+            // we tell the client to execute 'new message'
+            socket.broadcast.emit('new message', {
+              data: data
+            });
+          });
+
+
+// when the client emits 'add user', this listens and executes
+  socket.on('add user', () => {
+    console.log("new user is connected");
+    if (addedUser) return;
+
+    // we store the username in the socket session for this client
+    socket.username = "anonymous"+x;
+    ++x;
+    addedUser = true;
+    socket.emit('login', {
+        username:socket.username,
+        numUsers: x
+    });
+
+    // echo globally (all clients) that a person has connected
+    socket.broadcast.emit('user joined', {
+      username: socket.username,
+      numUsers: x
+    });
+
+  });
+
+  // when the client emits 'typing', we broadcast it to others
+  socket.on('typing', () => {
+    socket.broadcast.emit('typing', {
+      username: socket.username
+    });
+  });
+
+  // when the client emits 'stop typing', we broadcast it to others
+  socket.on('stop typing', () => {
+    socket.broadcast.emit('stop typing', {
+      username: socket.username
+    });
+  });
+
+
+   // when the user disconnects.. perform this
+   socket.on('disconnect', () => {
+    if (addedUser) {
+      --x;
+
+      // echo globally that this client has left
+      socket.broadcast.emit('user left', {
+        username: socket.username,
+        numUsers: x
+      });
+    }
+  });
+
+          //also use this to find number of users online, etc.
+
+     
+
